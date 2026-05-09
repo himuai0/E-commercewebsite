@@ -41,12 +41,26 @@ router.get("/:slug", async (req, res) => {
       return;
     }
 
+    // Fetch direct children of this category
+    const allCats = await db.select().from(categoriesTable).orderBy(asc(categoriesTable.sortOrder));
+    const directChildren = allCats.filter((c) => c.parentSlug === slug);
+
+    // For each child, get product count and their own children
+    const childrenWithData = directChildren.map((child) => {
+      const grandchildren = allCats.filter((c) => c.parentSlug === child.slug);
+      return {
+        ...child,
+        children: grandchildren,
+        productCount: undefined as number | undefined,
+      };
+    });
+
     const products = await db.select().from(productsTable).where(eq(productsTable.categorySlug, slug)).limit(50);
 
     const colors = (p: typeof productsTable.$inferSelect) => (p.colors || []).map((color: string) => ({ color, sizes: p.sizes || [] }));
 
     res.json({
-      category: { ...category, children: [] },
+      category: { ...category, children: childrenWithData },
       products: products.map(p => ({
         id: p.id, slug: p.slug, name: p.name, brand: p.brand,
         productType: p.productType, material: p.material, collar: p.collar,

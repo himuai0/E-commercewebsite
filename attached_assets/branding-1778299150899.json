@@ -1,0 +1,139 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Jost",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#D31F26",
+    "secondary": "#E3322B",
+    "accent": "#25D366",
+    "background": "#FFFFFF",
+    "textPrimary": "#222222",
+    "link": "#B9A16B"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Jost",
+      "heading": "Jost"
+    },
+    "fontStacks": {
+      "heading": [
+        "Jost"
+      ],
+      "body": [
+        "Jost"
+      ],
+      "paragraph": [
+        "Jost"
+      ]
+    },
+    "fontSizes": {
+      "h1": "18px",
+      "h2": "33.15px",
+      "body": "17px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {
+    "input": {
+      "background": "transparent",
+      "textColor": "#373435",
+      "borderColor": null,
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonPrimary": {
+      "background": "#E3322B",
+      "textColor": "#FFFFFF",
+      "borderRadius": "6px",
+      "borderRadiusCorners": {
+        "topLeft": "6px",
+        "topRight": "6px",
+        "bottomRight": "6px",
+        "bottomLeft": "6px"
+      },
+      "shadow": "none"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#181818",
+      "borderColor": "#181818",
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://www.tmaker.my/wp-content/uploads/2023/02/tshirt-printing-tmaker-logo-grey.png",
+    "favicon": "https://www.tmaker.my/wp-content/uploads/2015/02/Icon.png",
+    "ogImage": "https://www.tmaker.my/wp-content/uploads/2014/06/76000-purple.png",
+    "logoHref": "https://www.tmaker.my/",
+    "logoAlt": "TMaker"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand name 'TMaker'.",
+    "confidence": 0.9,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Get Formal Quote",
+      "reasoning": "Button #0 has a vibrant brand color (#E3322B) and action-oriented text ('Get Formal Quote'), making it the primary CTA."
+    },
+    "secondary": {
+      "index": 1,
+      "text": "Buy Now",
+      "reasoning": "Button #1 has a transparent background with a border, making it a suitable secondary CTA with a different color group than the primary."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "businesses looking for custom t-shirts"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, links to the homepage, and matches the brand name 'TMaker'.",
+        "confidence": 0.9
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}
