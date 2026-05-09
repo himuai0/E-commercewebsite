@@ -132,9 +132,9 @@ export default function ReadyMade() {
 
       {/* Popular TMaker Services */}
       <section className="max-w-screen-xl mx-auto px-4 py-14">
-        <h2 className="text-2xl font-black text-gray-900 mb-3 text-center">Popular TMaker Services</h2>
+        <h2 className="text-2xl font-black text-gray-900 mb-3 text-center">Popular Nashah Advisory Services</h2>
         <p className="text-gray-500 text-center mb-10 text-sm max-w-2xl mx-auto">
-          Explore the main TMaker services for custom apparel, printing, corporate gifts and event merchandise in Malaysia.
+          Explore the main Nashah Advisory services for custom apparel, printing, corporate gifts and event merchandise in Malaysia.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {SERVICES.map((s) => (
@@ -157,7 +157,7 @@ export default function ReadyMade() {
           <h2 className="text-2xl font-black mb-3">Ready to Brand Your Apparel?</h2>
           <p className="text-red-200 mb-6 text-sm">Contact us via WhatsApp for the fastest response. Free colour mockup included.</p>
           <a
-            href="https://wa.me/601123456789"
+            href="https://wa.me/60183652033"
             className="inline-block bg-[#FF6B00] text-white font-black px-8 py-3 rounded-full hover:bg-orange-600 transition-colors shadow-lg"
             data-testid="button-whatsapp-cta"
           >

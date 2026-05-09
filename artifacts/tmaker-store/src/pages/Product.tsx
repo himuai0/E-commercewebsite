@@ -101,7 +101,7 @@ export default function Product() {
   const unitPrice = p.priceMin;
   const lineTotal = unitPrice * qty;
   const waText = encodeURIComponent(
-    `Hi TMaker, I would like to request a quote. Product: ${p.name}. Quantity: ____. Logo/customisation: Yes/No. Deadline: ____. Delivery location: ____.`
+    `Hi Nashah Advisory, I would like to request a quote. Product: ${p.name}. Quantity: ____. Logo/customisation: Yes/No. Deadline: ____. Delivery location: ____.`
   );
 
   function handleAddToCart() {
@@ -314,16 +314,16 @@ export default function Product() {
             </p>
           )}
 
-          {/* Customise with TMaker section */}
+          {/* Customise with Nashah Advisory section */}
           <div className="border border-gray-200 p-4 mt-4">
             <p className="text-xs font-black text-[#D31F26] uppercase mb-1 tracking-wide">Need logo printing or bulk price?</p>
-            <h3 className="font-black text-gray-900 mb-3">CUSTOMISE THIS PRODUCT WITH TMAKER</h3>
+            <h3 className="font-black text-gray-900 mb-3">CUSTOMISE THIS PRODUCT WITH NASHAH ADVISORY</h3>
             <p className="text-xs text-gray-500 mb-4">
               Send us this product name, quantity, logo or artwork, deadline and delivery location. Our team will recommend the suitable printing method and bulk quote.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 mb-3">
               <a
-                href={`https://wa.me/60129088654?text=${waText}`}
+                href={`https://wa.me/60183652033?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white text-sm font-bold py-2.5 px-4 hover:bg-[#1ebe5d] transition-colors"

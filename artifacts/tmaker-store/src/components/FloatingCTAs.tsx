@@ -22,7 +22,7 @@ export default function FloatingCTAs() {
         <div className="fixed bottom-36 right-4 z-50 w-72 bg-white border border-gray-200 shadow-2xl">
           <div className="bg-[#D31F26] text-white px-4 py-3 flex items-center justify-between">
             <div>
-              <p className="font-black text-sm">TMaker's Assistant</p>
+              <p className="font-black text-sm">Nashah Advisory Support</p>
               <p className="text-xs text-red-200">Instant help for products, quotes and orders</p>
             </div>
             <button onClick={() => setChatOpen(false)} className="text-white/70 hover:text-white">
@@ -56,7 +56,7 @@ export default function FloatingCTAs() {
       <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 items-end">
         {/* WhatsApp button */}
         <a
-          href="https://wa.me/601123456789"
+          href="https://wa.me/60183652033"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-[#25D366] text-white text-sm font-bold px-4 py-2.5 rounded-full shadow-lg hover:bg-[#1ebe5d] transition-colors"

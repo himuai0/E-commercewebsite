@@ -18,7 +18,7 @@ export default function Catalogues() {
       <section className="bg-gray-900 text-white py-20 text-center">
         <div className="max-w-3xl mx-auto px-4">
           <p className="text-[#D31F26] font-bold text-sm tracking-widest mb-3 uppercase">Catalogues</p>
-          <h1 className="text-4xl font-black mb-6">TMaker Product Catalogues 2025</h1>
+          <h1 className="text-4xl font-black mb-6">Nashah Advisory Product Catalogues 2025</h1>
           <p className="text-gray-400 text-lg">Browse our full product range — download PDF catalogues or shop directly online.</p>
         </div>
       </section>

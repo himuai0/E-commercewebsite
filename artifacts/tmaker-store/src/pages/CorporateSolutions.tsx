@@ -29,7 +29,7 @@ export default function CorporateSolutions() {
           <p className="text-[#D31F26] font-bold text-sm tracking-widest mb-3 uppercase">Corporate Solutions</p>
           <h1 className="text-4xl font-black mb-6">Dress Your Team.<br />Represent Your Brand.</h1>
           <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-            From small SMEs to Fortune 500 companies — TMaker is Malaysia's corporate apparel partner of choice. Bulk orders, dedicated support, and guaranteed quality.
+            From small SMEs to Fortune 500 companies — Nashah Advisory is Malaysia's corporate apparel partner of choice. Bulk orders, dedicated support, and guaranteed quality.
           </p>
           <Link href="/custom-made#quote" className="inline-block bg-[#D31F26] text-white font-black px-10 py-4 hover:bg-red-700 transition-colors">
             GET CORPORATE PRICING
@@ -109,7 +109,7 @@ export default function CorporateSolutions() {
           <h2 className="text-2xl font-black mb-4">Ready to Dress Your Team?</h2>
           <p className="text-gray-400 mb-8">Contact our corporate team today. We'll prepare a custom quote within 24 hours.</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <a href="https://wa.me/601123456789" className="bg-[#D31F26] text-white font-black px-8 py-3 hover:bg-red-700 transition-colors">
+            <a href="https://wa.me/60183652033" className="bg-[#D31F26] text-white font-black px-8 py-3 hover:bg-red-700 transition-colors">
               WHATSAPP CORPORATE TEAM
             </a>
             <Link href="/custom-made#quote" className="border border-gray-500 text-white font-black px-8 py-3 hover:bg-white hover:text-gray-900 transition-colors">

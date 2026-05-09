@@ -1,6 +1,6 @@
-# TMaker Store
+# Nashah Advisory Store
 
-A full-featured TMaker-style custom apparel ecommerce website clone for a Malaysian custom printing shop. Customers can browse products, add to cart, request quotes, and generate AI product concepts.
+A full-featured custom apparel ecommerce website for Nashah Advisory, a Malaysian custom printing shop. Customers can browse products, add to cart, request quotes, and generate AI product concepts.
 
 ## Run & Operate
 

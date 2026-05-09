@@ -401,7 +401,7 @@ export default function CustomMade() {
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <a
-            href="https://wa.me/60129088654?text=Hi%20TMaker%2C%20I%20need%20a%20custom%20made%20apparel%20quote."
+            href="https://wa.me/60183652033?text=Hi%20Nashah%20Advisory%2C%20I%20need%20a%20custom%20made%20apparel%20quote."
             className="bg-[#D31F26] text-white font-black px-8 py-3 text-sm hover:bg-red-700 transition-colors"
           >
             WHATSAPP QUOTE

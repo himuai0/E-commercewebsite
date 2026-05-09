@@ -23,7 +23,7 @@ const NAV_LINKS = [
   },
   {
     label: "CATALOGUES", href: "#", sub: [
-      { label: "Catalogues by TMaker", href: "/catalogues-by-tmaker" },
+      { label: "Catalogues by Nashah Advisory", href: "/catalogues-by-tmaker" },
       { label: "Catalogue by Brands", href: "/catalogue-by-brands" },
     ],
   },
@@ -75,7 +75,7 @@ export default function Header() {
         <div className="flex gap-16 animate-marquee whitespace-nowrap">
           {Array(4).fill(null).map((_, i) => (
             <span key={i} className="shrink-0">
-              Join TMAKER Member &nbsp;•&nbsp; Free Sign Up &nbsp;•&nbsp; 500 Welcome Points (RM5) &nbsp;•&nbsp; Earn Points Every Purchase &nbsp;•&nbsp; Enjoy 5% Lifetime Discount &nbsp;•&nbsp;
+              Join Nashah Advisory &nbsp;•&nbsp; Free Consultation &nbsp;•&nbsp; Custom Apparel Experts &nbsp;•&nbsp; Fast Turnaround &nbsp;•&nbsp; Bulk Pricing Available &nbsp;•&nbsp;
             </span>
           ))}
         </div>
@@ -118,7 +118,7 @@ export default function Header() {
                 <path d="M22 12 L38 12 L38 14 L22 14 Z" fill="#b81a1f"/>
               </svg>
             </div>
-            <span className="font-black text-xl tracking-tight text-gray-800 leading-none">TMAKER</span>
+            <span className="font-black text-xl tracking-tight text-gray-800 leading-none">NASHAH ADVISORY</span>
           </Link>
 
           {/* Desktop nav */}

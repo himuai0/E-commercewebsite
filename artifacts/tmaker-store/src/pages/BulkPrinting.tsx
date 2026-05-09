@@ -44,7 +44,7 @@ export default function BulkPrinting() {
         <div className="py-3 text-sm text-gray-500">
           <Link href="/" className="hover:text-[#D31F26]">Home</Link>
           <span className="mx-2">»</span>
-          <span className="text-gray-800">Bulk T-Shirt Printing Malaysia | TMaker</span>
+          <span className="text-gray-800">Bulk T-Shirt Printing Malaysia | Nashah Advisory</span>
         </div>
       </div>
 
@@ -55,13 +55,13 @@ export default function BulkPrinting() {
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Bulk T-Shirt Printing</p>
             <h1 className="text-3xl font-black text-gray-900 mb-5 leading-snug">Bulk T-Shirt Printing Malaysia</h1>
             <p className="text-gray-600 text-sm leading-relaxed mb-7">
-              TMaker supports bulk T-shirt printing in Malaysia for corporate uniforms, events, campaigns, schools, clubs, agencies and organisations.
-              If you need larger quantities with consistent quality, clear artwork approval and deadline planning, TMaker can recommend suitable T-shirt
+              Nashah Advisory supports bulk T-shirt printing in Malaysia for corporate uniforms, events, campaigns, schools, clubs, agencies and organisations.
+              If you need larger quantities with consistent quality, clear artwork approval and deadline planning, Nashah Advisory can recommend suitable T-shirt
               options and printing methods based on your budget and timeline.
             </p>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://wa.me/60129088654?text=Hi%20TMaker%2C%20I%20need%20a%20bulk%20T-shirt%20printing%20quote.%20Quantity%3A%20__.%20Size%20breakdown%3A%20__.%20Artwork%2Flogo%3A%20__.%20Deadline%3A%20__.%20Delivery%20location%3A%20__."
+                href="https://wa.me/60183652033?text=Hi%20Nashah%20Advisory%2C%20I%20need%20a%20bulk%20T-shirt%20printing%20quote.%20Quantity%3A%20__.%20Size%20breakdown%3A%20__.%20Artwork%2Flogo%3A%20__.%20Deadline%3A%20__.%20Delivery%20location%3A%20__."
                 className="bg-[#D31F26] text-white font-bold px-6 py-2.5 text-sm hover:bg-red-700 transition-colors"
               >
                 Get Bulk T-Shirt Quote
@@ -77,7 +77,7 @@ export default function BulkPrinting() {
           <div className="bg-gray-100 rounded overflow-hidden flex items-center justify-center min-h-[280px]">
             <img
               src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=600&h=450&fit=crop"
-              alt="Bulk T-shirt printing Malaysia by TMaker"
+              alt="Bulk T-shirt printing Malaysia by Nashah Advisory"
               className="w-full h-full object-cover"
             />
           </div>
@@ -88,7 +88,7 @@ export default function BulkPrinting() {
       <section className="bg-gray-50 py-12">
         <div className="max-w-6xl mx-auto px-4">
           <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Bulk Buyers</p>
-          <h2 className="text-2xl font-black text-gray-900 mb-8">Who Orders Bulk T-Shirts From TMaker?</h2>
+          <h2 className="text-2xl font-black text-gray-900 mb-8">Who Orders Bulk T-Shirts From Nashah Advisory?</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {BULK_BUYERS.map((item) => (
               <Link key={item.title} href={item.href} className="block bg-white border border-gray-200 hover:border-[#D31F26] transition-colors group">
@@ -134,7 +134,7 @@ export default function BulkPrinting() {
           Embroidery is usually better for polo shirts, caps and premium uniform logos.
         </p>
         <a
-          href="https://wa.me/60129088654?text=Hi%20TMaker%2C%20I%20need%20a%20bulk%20T-shirt%20printing%20quote."
+          href="https://wa.me/60183652033?text=Hi%20Nashah%20Advisory%2C%20I%20need%20a%20bulk%20T-shirt%20printing%20quote."
           className="inline-block bg-[#D31F26] text-white font-bold px-6 py-2.5 text-sm hover:bg-red-700 transition-colors"
         >
           Request Bulk Quote
@@ -158,7 +158,7 @@ export default function BulkPrinting() {
             ))}
           </div>
           <p className="text-sm text-gray-600 mt-6">
-            <span className="font-bold">Need jackets too?</span> TMaker also supports custom jacket printing in Malaysia for corporate jackets, windbreakers, event jackets, Bomba jackets and technician jackets.
+            <span className="font-bold">Need jackets too?</span> Nashah Advisory also supports custom jacket printing in Malaysia for corporate jackets, windbreakers, event jackets, Bomba jackets and technician jackets.
           </p>
         </div>
       </section>
@@ -175,7 +175,7 @@ export default function BulkPrinting() {
             { label: "Best For Bulk", text: "Company events, campaign shirts, roadshows, school activities, clubs, teams and large giveaways." },
             { label: "Best Method", text: "Silkscreen is often suitable for larger simple artwork. DTF is useful for colourful and detailed designs." },
             { label: "What To Prepare", text: "Quantity, size list, artwork file, shirt colour, printing position, deadline and delivery location." },
-            { label: "How To Save Time", text: "Send your design and quantity early so TMaker can recommend the right shirt and printing method." },
+            { label: "How To Save Time", text: "Send your design and quantity early so Nashah Advisory can recommend the right shirt and printing method." },
           ].map((item) => (
             <div key={item.label} className="bg-gray-50 p-4 border border-gray-200">
               <p className="font-bold text-gray-900 text-sm mb-2">{item.label}</p>
@@ -190,11 +190,11 @@ export default function BulkPrinting() {
         <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Fast Quote Path</p>
         <h2 className="text-2xl font-black text-gray-900 mb-3">Need A Bulk T-Shirt Quote?</h2>
         <p className="text-sm text-gray-600 mb-7 max-w-xl">
-          Share your quantity, size breakdown, shirt colour, artwork and deadline. TMaker can recommend DTF, silkscreen or other suitable options for your bulk order.
+          Share your quantity, size breakdown, shirt colour, artwork and deadline. Nashah Advisory can recommend DTF, silkscreen or other suitable options for your bulk order.
         </p>
         <div className="flex flex-wrap gap-3">
           <a
-            href="https://wa.me/60129088654?text=Hi%20TMaker%2C%20I%20need%20a%20bulk%20T-shirt%20printing%20quote.%20Quantity%3A%20__.%20Size%20breakdown%3A%20__.%20Artwork%2Flogo%3A%20__.%20Deadline%3A%20__.%20Delivery%20location%3A%20__."
+            href="https://wa.me/60183652033?text=Hi%20Nashah%20Advisory%2C%20I%20need%20a%20bulk%20T-shirt%20printing%20quote.%20Quantity%3A%20__.%20Size%20breakdown%3A%20__.%20Artwork%2Flogo%3A%20__.%20Deadline%3A%20__.%20Delivery%20location%3A%20__."
             className="bg-[#D31F26] text-white font-bold px-6 py-2.5 text-sm hover:bg-red-700 transition-colors"
           >
             WhatsApp Bulk T-Shirt Printing

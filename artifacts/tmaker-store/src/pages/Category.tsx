@@ -276,7 +276,7 @@ export default function Category() {
           <div className="bg-gray-50 border border-gray-200 px-5 py-3 mb-5 flex items-center justify-between flex-wrap gap-3">
             <div>
               <p className="text-sm font-bold text-gray-800">Need logo customisation or bulk pricing?</p>
-              <p className="text-xs text-gray-500">Choose a product, then send TMaker your quantity, logo and deadline for a fast recommendation.</p>
+              <p className="text-xs text-gray-500">Choose a product, then send Nashah Advisory your quantity, logo and deadline for a fast recommendation.</p>
             </div>
             <Link
               href="/custom-made#quote"

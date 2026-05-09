@@ -175,7 +175,7 @@ export default function Home() {
       {/* Why choose us */}
       <section className="bg-gray-900 text-white py-14">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-black mb-2 text-center">WHY CHOOSE TMAKER?</h2>
+          <h2 className="text-2xl font-black mb-2 text-center">WHY CHOOSE NASHAH ADVISORY?</h2>
           <p className="text-gray-400 text-center mb-10">Everything you need, from design to delivery.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {WHY_US.map((w) => (

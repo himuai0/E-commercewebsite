@@ -34,7 +34,7 @@ export default function UserGuide() {
         <div className="max-w-3xl mx-auto px-4">
           <p className="text-[#D31F26] font-bold text-sm tracking-widest mb-3 uppercase">How It Works</p>
           <h1 className="text-4xl font-black mb-6">User Guide</h1>
-          <p className="text-gray-400 text-lg">A step-by-step guide to ordering custom apparel with TMaker — fast, simple, and hassle-free.</p>
+          <p className="text-gray-400 text-lg">A step-by-step guide to ordering custom apparel with Nashah Advisory — fast, simple, and hassle-free.</p>
         </div>
       </section>
 
@@ -56,7 +56,7 @@ export default function UserGuide() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-xl font-black text-gray-900 mb-8">STILL HAVE QUESTIONS?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <a href="https://wa.me/601123456789" className="bg-[#D31F26] text-white font-black px-6 py-4 hover:bg-red-700 transition-colors block">
+            <a href="https://wa.me/60183652033" className="bg-[#D31F26] text-white font-black px-6 py-4 hover:bg-red-700 transition-colors block">
               CHAT ON WHATSAPP
             </a>
             <Link href="/custom-made#quote" className="border-2 border-gray-800 text-gray-800 font-black px-6 py-4 hover:bg-gray-800 hover:text-white transition-colors block">
