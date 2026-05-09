@@ -1,133 +1,419 @@
+import { useState } from "react";
 import { Link } from "wouter";
-import { CheckCircle, ArrowRight } from "lucide-react";
 
-const STEPS = [
-  { num: "01", title: "Choose Your Product", desc: "Browse our catalogue of 500+ apparel styles — t-shirts, polos, uniforms, hoodies, jackets, and more." },
-  { num: "02", title: "Send Us Your Design", desc: "Share your logo, artwork, or concept. Our design team will create a mockup at no charge." },
-  { num: "03", title: "Review & Approve", desc: "We send you a colour proof for approval. No production starts until you're 100% satisfied." },
-  { num: "04", title: "Production", desc: "Once approved, our factory produces your order with quality checks at every stage." },
-  { num: "05", title: "Quality Control", desc: "Each garment is inspected for print quality, sizing, and finish before packing." },
-  { num: "06", title: "Delivery", desc: "Your order ships within 7–14 working days. Nationwide delivery across Malaysia." },
-];
+const TABS = ["T-SHIRT", "POLO", "OUTERWEAR", "PROFESSIONAL", "BOTTOMS", "VEST", "SINGLET", "MERCHANDISE", "SPECIAL"];
 
-const FEATURES = [
-  "Minimum 50 pieces per colour",
-  "Free design consultation",
-  "Free colour mockup before production",
-  "Pantone colour matching available",
-  "100% quality guarantee",
-  "Bulk pricing — the more you order, the less you pay",
-  "Corporate invoice available",
-  "WhatsApp support 9AM–6PM",
-];
+const PROCESS_STEPS = ["ENQUIRY", "DESIGN", "MOCKUP", "PRODUCTION", "QUALITY CHECK", "DELIVERY"];
 
-const PRINT_METHODS = [
-  { name: "Embroidery", best: "Polo shirts, caps, corporate uniforms", min: "50 pcs" },
-  { name: "Silkscreen", best: "T-shirts, large batch orders", min: "100 pcs" },
-  { name: "Heat Press", best: "Small batches, photos, gradients", min: "1 pc" },
-  { name: "Direct-to-Film (DTF)", best: "All fabrics, detailed artwork", min: "1 pc" },
-  { name: "Sublimation", best: "Sportswear, all-over prints", min: "50 pcs" },
-  { name: "Direct-to-Garment (DTG)", best: "Cotton, retail-quality prints", min: "1 pc" },
-];
+type GalleryItem = {
+  image: string;
+  itemType: string;
+  material: string;
+  printingMethods: string;
+  designPlacement: string;
+  notableDetail: string;
+};
+
+const GALLERY: Record<string, GalleryItem[]> = {
+  "T-SHIRT": [
+    {
+      image: "https://images.unsplash.com/photo-1622445275576-721325763afe?w=400&h=400&fit=crop",
+      itemType: "Short sleeve round neck T-shirt",
+      material: "Minimesh fabric with TC rib collar",
+      printingMethods: "Front embroidery and back silkscreen printing",
+      designPlacement: "Embroidered school logo on the front chest and silkscreen printed text on the back",
+      notableDetail: "Cut-and-sew white side panels with contrast body colours",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=400&fit=crop",
+      itemType: "Short sleeve round neck T-shirt",
+      material: "Light grey fabric with polyester rib collar",
+      printingMethods: "Front and back silkscreen printing",
+      designPlacement: "Silkscreen printed graphic on the back and a small printed detail on the front neckline area",
+      notableDetail: "Neckline double stitching, open-edge hem with double stitch, half backtube at collar",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=400&h=400&fit=crop",
+      itemType: "Oversized Round Neck T-Shirt",
+      material: "Black TC Single Jersey fabric",
+      printingMethods: "Heatpress printing",
+      designPlacement: "Large astronaut helmet graphic on the front and a small logo on the back near the neck",
+      notableDetail: "Features distinctive double stitching on the armholes",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=400&fit=crop",
+      itemType: "V-Neck T-Shirt",
+      material: "Black and White MF RJ PK 170gsm fabric",
+      printingMethods: "Embroidery (Front) and Heatpress (Back & Sleeve)",
+      designPlacement: "Logo on the front and text on the back",
+      notableDetail: "Features striped sublimation ribbing on the collar and cuffs, plus a black cut & sew strip across the shoulders",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+      itemType: "Round Neck T-Shirt",
+      material: "Black CVC Single Jersey fabric",
+      printingMethods: "Heatpress (Double Heat)",
+      designPlacement: "Small logo on the front left chest, with a large isometric graphic on the back",
+      notableDetail: "Features a custom double-sided woven label sewn on the side hem and a half backtube",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop",
+      itemType: "Long Sleeve Round Neck Shirt",
+      material: "Microfiber Eyelet Reverse Print fabric",
+      printingMethods: "Full Sublimation printing",
+      designPlacement: "Logo on the front chest, text on the back, and a subtle tiger watermark pattern throughout",
+      notableDetail: "Features 1-inch black handcuffs and a black rib collar",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=400&fit=crop",
+      itemType: "Football Jersey/Top",
+      material: "White Drop Needle fabric with Black MF PK (170gsm) and Black MF Eyelet (180gsm) panels",
+      printingMethods: "Silk Screen, High Density Print (White colour emboss), and Velvet Label",
+      designPlacement: "Text centered on the chest, with a circular logo on the left chest and a rectangular logo on the right chest",
+      notableDetail: "Features a custom-made spun collar and 2-inch cuffs, distinct black shoulder/side panels, and a curved hem",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&h=400&fit=crop",
+      itemType: "Raglan T-Shirt",
+      material: "Jersey",
+      printingMethods: "Heatpress",
+      designPlacement: "Large graphics centered on the front and back, with an additional logo on the right sleeve",
+      notableDetail: "Features a black contrast collar and half backtube",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?w=400&h=400&fit=crop",
+      itemType: "Round Neck T-Shirt",
+      material: "Microfiber Sandwich",
+      printingMethods: "Sublimation",
+      designPlacement: "Vibrant abstract geometric pattern covering the full body, with text across the upper back",
+      notableDetail: "Features a contrasting Dark Grey sublimated collar and half backtube",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1604006852748-903fccbc4019?w=400&h=400&fit=crop",
+      itemType: "Round Neck T-Shirt",
+      material: "CVC Jersey",
+      printingMethods: "Front and Back Silkscreen and Sleeve Heatpress",
+      designPlacement: "Text on the front chest, text on the back, and multiple logos on both the left and right sleeves",
+      notableDetail: "Features a specific gold colour matched to Pantone P15-7 C for the silkscreen elements",
+    },
+  ],
+  "POLO": [
+    {
+      image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?w=400&h=400&fit=crop",
+      itemType: "Short Sleeve Polo Shirt",
+      material: "Pique Cotton fabric",
+      printingMethods: "Embroidery",
+      designPlacement: "Embroidered company logo on the left chest",
+      notableDetail: "Features a 3-button placket and ribbed collar and cuffs",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1625910513413-c861f1e6b3a4?w=400&h=400&fit=crop",
+      itemType: "Polo Shirt",
+      material: "Microfiber Pique fabric",
+      printingMethods: "Silkscreen and Embroidery",
+      designPlacement: "Embroidered logo on left chest, silkscreen text on back",
+      notableDetail: "Features contrast rib collar and cuffs with side slits",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1606914501449-5a96b6ce24ca?w=400&h=400&fit=crop",
+      itemType: "Polo Shirt",
+      material: "Cotton Pique 220gsm",
+      printingMethods: "Embroidery (Front) and Heatpress (Sleeve)",
+      designPlacement: "Logo on front left chest and sleeve",
+      notableDetail: "Features a half-backtube and open-edge hem",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop",
+      itemType: "Long Sleeve Polo Shirt",
+      material: "Microfiber Smooth fabric",
+      printingMethods: "Sublimation",
+      designPlacement: "Full sublimation pattern with logo on chest",
+      notableDetail: "Features contrast colour cuffs and collar",
+    },
+  ],
+  "OUTERWEAR": [
+    {
+      image: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400&h=400&fit=crop",
+      itemType: "Zip-Up Hoodie",
+      material: "Fleece Cotton 320gsm",
+      printingMethods: "Silkscreen and Embroidery",
+      designPlacement: "Embroidered logo on left chest, silkscreen back graphic",
+      notableDetail: "Features front pockets, ribbed hem and cuffs",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=400&h=400&fit=crop",
+      itemType: "Windbreaker Jacket",
+      material: "Polyester Taslan fabric",
+      printingMethods: "Silkscreen",
+      designPlacement: "Logo on chest, text on back",
+      notableDetail: "Water-resistant coating with taped seams",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop",
+      itemType: "Varsity Jacket",
+      material: "Wool body with leather sleeves",
+      printingMethods: "Embroidery",
+      designPlacement: "Large back embroidery and chest logo",
+      notableDetail: "Cut-and-sew contrast colour panels",
+    },
+  ],
+  "PROFESSIONAL": [
+    {
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      itemType: "Corporate Shirt",
+      material: "Microfiber Smooth 150gsm",
+      printingMethods: "Embroidery",
+      designPlacement: "Logo embroidered on left chest pocket",
+      notableDetail: "Available in long and short sleeve with pen pocket",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?w=400&h=400&fit=crop",
+      itemType: "Safety Vest",
+      material: "Polyester Mesh with reflective strips",
+      printingMethods: "Silkscreen",
+      designPlacement: "Company name on front and back",
+      notableDetail: "High visibility reflective strips on chest and back",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4b0c3b?w=400&h=400&fit=crop",
+      itemType: "Batik Shirt",
+      material: "Rayon batik fabric",
+      printingMethods: "All-over print",
+      designPlacement: "Traditional batik pattern throughout",
+      notableDetail: "Custom batik pattern design available",
+    },
+  ],
+  "BOTTOMS": [
+    {
+      image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=400&fit=crop",
+      itemType: "Cargo Pants",
+      material: "Cotton Twill 240gsm",
+      printingMethods: "Silkscreen",
+      designPlacement: "Small logo on left thigh",
+      notableDetail: "Multiple cargo pockets with metal buttons",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=400&fit=crop",
+      itemType: "Sports Shorts",
+      material: "Microfiber Minimesh",
+      printingMethods: "Sublimation",
+      designPlacement: "Side panel pattern and logo on waistband",
+      notableDetail: "Elastic waistband with drawstring and mesh inner lining",
+    },
+  ],
+  "VEST": [
+    {
+      image: "https://images.unsplash.com/photo-1594938298603-c8148c4b0c3b?w=400&h=400&fit=crop",
+      itemType: "Padded Vest",
+      material: "Nylon shell with polyester fill",
+      printingMethods: "Embroidery",
+      designPlacement: "Logo on left chest",
+      notableDetail: "Zippered pockets and stand-up collar",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&h=400&fit=crop",
+      itemType: "Sports Vest / Singlet",
+      material: "Microfiber Minimesh",
+      printingMethods: "Sublimation",
+      designPlacement: "Number on front and back",
+      notableDetail: "Racerback cut with curved hem",
+    },
+  ],
+  "SINGLET": [
+    {
+      image: "https://images.unsplash.com/photo-1620799139834-6b8f844fbe61?w=400&h=400&fit=crop",
+      itemType: "Round Neck Singlet",
+      material: "Cotton Single Jersey 160gsm",
+      printingMethods: "DTF Print",
+      designPlacement: "Large graphic on front",
+      notableDetail: "Open-edge armholes with drop shoulder cut",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&h=400&fit=crop",
+      itemType: "Sports Singlet",
+      material: "Microfiber Dry-Fit fabric",
+      printingMethods: "Sublimation",
+      designPlacement: "Full body sublimation with number on front",
+      notableDetail: "Moisture-wicking with mesh side panels",
+    },
+  ],
+  "MERCHANDISE": [
+    {
+      image: "https://images.unsplash.com/photo-1620799139507-c5dd53bd8e83?w=400&h=400&fit=crop",
+      itemType: "Tote Bag",
+      material: "Canvas 12oz",
+      printingMethods: "Silkscreen",
+      designPlacement: "Centered logo on front panel",
+      notableDetail: "Short and long handle options available",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+      itemType: "Lanyard",
+      material: "Polyester 15mm",
+      printingMethods: "Sublimation",
+      designPlacement: "Repeated logo pattern along the length",
+      notableDetail: "Safety breakaway clip with metal snap hook",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=400&fit=crop",
+      itemType: "Baseball Cap",
+      material: "Cotton twill structured cap",
+      printingMethods: "Embroidery",
+      designPlacement: "Logo on front panel",
+      notableDetail: "Adjustable velcro closure, one size fits all",
+    },
+  ],
+  "SPECIAL": [
+    {
+      image: "https://images.unsplash.com/photo-1571945153237-4929e783af4a?w=400&h=400&fit=crop",
+      itemType: "Full Sublimation Jersey",
+      material: "Microfiber Eyelet 160gsm",
+      printingMethods: "Full Sublimation",
+      designPlacement: "All-over custom design with number on front and back",
+      notableDetail: "Cut-and-sew panels for tailored athletic fit",
+    },
+    {
+      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop",
+      itemType: "Bomber Jacket",
+      material: "Satin polyester with ribbed trim",
+      printingMethods: "Embroidery and Heatpress",
+      designPlacement: "Large back embroidery and chest patch",
+      notableDetail: "Custom woven labels and inside lining printing available",
+    },
+  ],
+};
 
 export default function CustomMade() {
-  return (
-    <div>
-      {/* Hero */}
-      <section className="bg-gray-900 text-white py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-[#D31F26] font-bold text-sm tracking-widest mb-3 uppercase">Custom Made Apparel</p>
-          <h1 className="text-4xl md:text-5xl font-black mb-6">From Idea to Delivery,<br />We Handle Everything.</h1>
-          <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-            Malaysia's most trusted custom apparel partner. Brands, event organizers, schools, and corporations — we've got you covered.
-          </p>
-          <a href="#quote" className="inline-block bg-[#D31F26] text-white font-black px-10 py-4 hover:bg-red-700 transition-colors" data-testid="button-get-quote-hero">
-            GET A FREE QUOTE
-          </a>
-        </div>
-      </section>
+  const [activeTab, setActiveTab] = useState("T-SHIRT");
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+  const items = GALLERY[activeTab] ?? [];
 
-      {/* Process */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <h2 className="text-2xl font-black text-gray-900 mb-2 text-center">HOW IT WORKS</h2>
-        <p className="text-gray-500 text-center mb-10">Our streamlined 6-step process keeps you in control every step of the way.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {STEPS.map((step) => (
-            <div key={step.num} className="border border-gray-200 p-6 hover:border-[#D31F26] transition-colors group">
-              <div className="text-3xl font-black text-[#D31F26] mb-3">{step.num}</div>
-              <h3 className="font-black text-gray-900 mb-2 group-hover:text-[#D31F26] transition-colors">{step.title}</h3>
-              <p className="text-sm text-gray-500">{step.desc}</p>
+  return (
+    <div className="bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Breadcrumb */}
+        <div className="py-3 text-sm text-gray-500">
+          <Link href="/" className="hover:text-[#D31F26]">Home</Link>
+          <span className="mx-2">»</span>
+          <span className="text-gray-800">Custom Made</span>
+        </div>
+
+        {/* Page title */}
+        <div className="text-center py-6">
+          <h1 className="text-3xl font-black text-gray-900 tracking-wide mb-4">CUSTOM MADE</h1>
+          <p className="text-gray-600 text-base">End-to-end custom apparel and merchandise production.</p>
+          <p className="text-gray-600 text-base">From material selection to final finishing, every piece is made to specification.</p>
+        </div>
+
+        <hr className="border-gray-200 mb-8" />
+
+        {/* Process steps */}
+        <div className="flex items-center justify-center flex-wrap gap-0 mb-10 text-sm font-semibold tracking-widest text-gray-700">
+          {PROCESS_STEPS.map((step, i) => (
+            <div key={step} className="flex items-center">
+              <span className="uppercase">{step}</span>
+              {i < PROCESS_STEPS.length - 1 && (
+                <span className="text-[#D31F26] mx-3 font-black">→</span>
+              )}
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Print methods */}
-      <section className="bg-gray-50 py-14">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-black text-gray-900 mb-2 text-center">PRINTING METHODS</h2>
-          <p className="text-gray-500 text-center mb-10">We support six industry-leading print technologies — we'll recommend the best one for your project.</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {PRINT_METHODS.map((m) => (
-              <div key={m.name} className="bg-white border border-gray-200 p-5">
-                <div className="w-2 h-5 bg-[#D31F26] mb-3" />
-                <h3 className="font-black text-gray-900 mb-2">{m.name}</h3>
-                <div className="text-sm text-gray-500 space-y-1">
-                  <p><span className="font-semibold text-gray-700">Best for:</span> {m.best}</p>
-                  <p><span className="font-semibold text-gray-700">Min order:</span> {m.min}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Description */}
+        <div className="text-center mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-600 text-sm leading-relaxed">
+            These custom-made pieces are developed based on real client orders.<br />
+            Designs shown reflect past production work and demonstrate available customisation options<br />
+            such as material selection, printing or embroidery methods, and logo placement.
+          </p>
         </div>
-      </section>
 
-      {/* Features */}
-      <section className="max-w-6xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-2xl font-black text-gray-900 mb-6">WHY CUSTOM MADE WITH TMAKER?</h2>
-            <ul className="space-y-3">
-              {FEATURES.map((f) => (
-                <li key={f} className="flex items-center gap-3 text-sm text-gray-700">
-                  <CheckCircle className="w-4 h-4 text-[#D31F26] shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <Link href="/shop" className="inline-flex items-center gap-2 mt-8 bg-black text-white font-black px-6 py-3 hover:bg-gray-800 transition-colors">
-              BROWSE PRODUCTS <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-          <div className="bg-gray-100 aspect-video overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop"
-              alt="Custom apparel manufacturing"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Quote section */}
-      <section id="quote" className="bg-[#D31F26] text-white py-16 text-center">
-        <div className="max-w-xl mx-auto px-4">
-          <h2 className="text-3xl font-black mb-4">Ready to Start Your Custom Order?</h2>
-          <p className="text-red-200 mb-8">Contact us via WhatsApp for the fastest response. Our team will get back to you within 2 hours during business hours.</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a
-              href="https://wa.me/601123456789?text=Hi+TMaker%2C+I%27m+interested+in+a+custom+apparel+order."
-              className="bg-white text-[#D31F26] font-black px-8 py-3 hover:bg-gray-100 transition-colors"
-              data-testid="button-whatsapp"
+        {/* Tab navigation */}
+        <div className="flex flex-wrap gap-0 border-b border-gray-200 mb-8">
+          {TABS.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => { setActiveTab(tab); setExpandedCard(null); }}
+              className={`px-4 py-2 text-sm font-semibold tracking-wide transition-colors border ${
+                activeTab === tab
+                  ? "border-gray-800 bg-white text-gray-900"
+                  : "border-transparent text-gray-500 hover:text-gray-800"
+              }`}
             >
-              WHATSAPP US NOW
-            </a>
-            <a href="mailto:hello@tmaker.my" className="border-2 border-white text-white font-black px-8 py-3 hover:bg-white hover:text-[#D31F26] transition-colors">
-              EMAIL US
-            </a>
-          </div>
+              {tab}
+            </button>
+          ))}
         </div>
-      </section>
+
+        {/* Product grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-16">
+          {items.map((item, idx) => (
+            <div key={idx} className="border border-gray-200 hover:border-gray-400 transition-colors bg-white">
+              <div className="aspect-square overflow-hidden bg-gray-50">
+                <img
+                  src={item.image}
+                  alt={item.itemType}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="border-t border-gray-200">
+                <button
+                  onClick={() => setExpandedCard(expandedCard === idx ? null : idx)}
+                  className="w-full text-center py-2 text-sm font-semibold text-gray-700 hover:text-[#D31F26] transition-colors"
+                >
+                  View
+                </button>
+              </div>
+              {expandedCard === idx && (
+                <div className="p-3 border-t border-gray-100 bg-gray-50 text-xs space-y-2">
+                  <div>
+                    <p className="font-semibold text-gray-800 uppercase text-[10px] tracking-wide mb-0.5">Item Type</p>
+                    <p className="text-gray-600">{item.itemType}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800 uppercase text-[10px] tracking-wide mb-0.5">Material</p>
+                    <p className="text-gray-600">{item.material}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800 uppercase text-[10px] tracking-wide mb-0.5">Printing Methods</p>
+                    <p className="text-gray-600">{item.printingMethods}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800 uppercase text-[10px] tracking-wide mb-0.5">Design Placement</p>
+                    <p className="text-gray-600">{item.designPlacement}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-800 uppercase text-[10px] tracking-wide mb-0.5">Notable Detail</p>
+                    <p className="text-gray-600">{item.notableDetail}</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA banner */}
+      <div className="bg-gray-900 text-white py-14 text-center">
+        <h2 className="text-2xl font-black mb-3">Ready to Start Your Custom Order?</h2>
+        <p className="text-gray-400 mb-7 text-sm max-w-md mx-auto">
+          Send us your quantity, garment type, artwork and deadline. We'll recommend the right product and printing method.
+        </p>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a
+            href="https://wa.me/60129088654?text=Hi%20TMaker%2C%20I%20need%20a%20custom%20made%20apparel%20quote."
+            className="bg-[#D31F26] text-white font-black px-8 py-3 text-sm hover:bg-red-700 transition-colors"
+          >
+            WHATSAPP QUOTE
+          </a>
+          <Link
+            href="/get-a-quote"
+            className="border border-white text-white font-black px-8 py-3 text-sm hover:bg-white hover:text-gray-900 transition-colors"
+          >
+            GET FORMAL QUOTE
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
