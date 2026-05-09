@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FloatingCTAs from "@/components/FloatingCTAs";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Shop from "@/pages/Shop";
@@ -59,6 +60,7 @@ function AppRoutes() {
         </Switch>
       </main>
       <Footer />
+      <FloatingCTAs />
     </div>
   );
 }
