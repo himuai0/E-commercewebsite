@@ -1,0 +1,138 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Jost",
+      "role": "body"
+    }
+  ],
+  "colors": {
+    "primary": "#D31F26",
+    "secondary": "#16A34A",
+    "accent": "#16A34A",
+    "background": "#FFFFFF",
+    "textPrimary": "#222222",
+    "link": "#B9A16B"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Jost",
+      "heading": "Jost"
+    },
+    "fontStacks": {
+      "heading": [
+        "Jost"
+      ],
+      "body": [
+        "Jost"
+      ],
+      "paragraph": [
+        "Jost"
+      ]
+    },
+    "fontSizes": {
+      "h1": "32px",
+      "h2": "24px",
+      "body": "17px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "5px"
+  },
+  "components": {
+    "input": {
+      "background": "transparent",
+      "textColor": "#373435",
+      "borderColor": null,
+      "borderRadius": "0px",
+      "borderRadiusCorners": {
+        "topLeft": "0px",
+        "topRight": "0px",
+        "bottomRight": "0px",
+        "bottomLeft": "0px"
+      },
+      "shadow": "none"
+    },
+    "buttonPrimary": {
+      "background": "#16A34A",
+      "textColor": "#FFFFFF",
+      "borderRadius": "999px",
+      "borderRadiusCorners": {
+        "topLeft": "999px",
+        "topRight": "999px",
+        "bottomRight": "999px",
+        "bottomLeft": "999px"
+      },
+      "shadow": "rgba(22, 163, 74, 0.28) 0px 10px 24px 0px"
+    },
+    "buttonSecondary": {
+      "background": "#000000",
+      "textColor": "#000000",
+      "borderRadius": "16px",
+      "borderRadiusCorners": {
+        "topLeft": "16px",
+        "topRight": "16px",
+        "bottomRight": "16px",
+        "bottomLeft": "16px"
+      },
+      "shadow": "none"
+    }
+  },
+  "images": {
+    "logo": "https://www.tmaker.my/wp-content/uploads/2023/02/tshirt-printing-tmaker-logo-grey.png",
+    "favicon": "https://www.tmaker.my/wp-content/uploads/2015/02/Icon.png",
+    "ogImage": "https://www.tmaker.my/wp-content/uploads/2023/03/ready-sub-custom-solution-04.jpg",
+    "logoHref": "https://www.tmaker.my/",
+    "logoAlt": "TMaker"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Selected #0 because it is visible, located in the header, and links to the homepage. The alt text matches the brand name 'TMaker', making it the primary brand logo.",
+    "confidence": 0.95,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 0,
+      "text": "Need Help?",
+      "reasoning": "Button #0 has a vibrant green background (#16A34A), which is a strong indicator of a primary CTA. The text 'Need Help?' suggests an action-oriented purpose, making it suitable as the primary button."
+    },
+    "secondary": {
+      "index": 1,
+      "text": "TALK TO US",
+      "reasoning": "Button #1 has a dark background (#000000) and the text 'TALK TO US', which is less vibrant than the primary but still action-oriented, making it a suitable secondary button."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "professional",
+    "energy": "medium",
+    "targetAudience": "business professionals looking for uniforms"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 0,
+        "selectedLogoReasoning": "Selected #0 because it is visible, located in the header, and links to the homepage. The alt text matches the brand name 'TMaker', making it the primary brand logo.",
+        "confidence": 0.95
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

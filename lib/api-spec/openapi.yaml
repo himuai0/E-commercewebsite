@@ -3,20 +3,25 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: TMaker Store API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: products
+    description: Product operations
+  - name: categories
+    description: Category operations
+  - name: ai
+    description: AI product generator
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +29,142 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /products:
+    get:
+      operationId: listProducts
+      tags: [products]
+      summary: List all products with optional filters
+      parameters:
+        - name: category
+          in: query
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [popular, latest, price_asc, price_desc]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Product list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductListResponse"
+
+  /products/featured:
+    get:
+      operationId: getFeaturedProducts
+      tags: [products]
+      summary: Get featured/favourite products
+      responses:
+        "200":
+          description: Featured products
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductListResponse"
+
+  /products/hot:
+    get:
+      operationId: getHotProducts
+      tags: [products]
+      summary: Get hot items and promotions
+      responses:
+        "200":
+          description: Hot products
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductListResponse"
+
+  /products/{slug}:
+    get:
+      operationId: getProduct
+      tags: [products]
+      summary: Get product by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Product detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          description: Not found
+
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [categories]
+      summary: Get full category tree
+      responses:
+        "200":
+          description: Category tree
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoryTreeResponse"
+
+  /categories/{slug}:
+    get:
+      operationId: getCategory
+      tags: [categories]
+      summary: Get category by slug with its products
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Category with products
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoryWithProducts"
+        "404":
+          description: Not found
+
+  /ai/generate-product:
+    post:
+      operationId: generateProduct
+      tags: [ai]
+      summary: AI product generator
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GenerateProductBody"
+      responses:
+        "200":
+          description: Generated product data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GeneratedProduct"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +175,227 @@ components:
       required:
         - status
 
+    ProductVariant:
+      type: object
+      properties:
+        color:
+          type: string
+        colorHex:
+          type: string
+        sizes:
+          type: array
+          items:
+            type: string
+        imageUrl:
+          type: string
+      required:
+        - color
+        - sizes
+
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+        name:
+          type: string
+        brand:
+          type: string
+        productType:
+          type: string
+        material:
+          type: string
+        collar:
+          type: string
+        sleeveStyle:
+          type: string
+        gender:
+          type: string
+        priceMin:
+          type: number
+        priceMax:
+          type: number
+        originalPriceMin:
+          type: number
+        originalPriceMax:
+          type: number
+        discountPercent:
+          type: integer
+        currency:
+          type: string
+        categorySlug:
+          type: string
+        variants:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductVariant"
+        imageUrl:
+          type: string
+        images:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        printingMethods:
+          type: array
+          items:
+            type: string
+        isHot:
+          type: boolean
+        isFeatured:
+          type: boolean
+        stock:
+          type: integer
+      required:
+        - id
+        - slug
+        - name
+        - brand
+        - priceMin
+        - priceMax
+        - currency
+        - categorySlug
+        - variants
+        - imageUrl
+        - images
+
+    ProductListResponse:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+        total:
+          type: integer
+      required:
+        - products
+        - total
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        slug:
+          type: string
+        name:
+          type: string
+        imageUrl:
+          type: string
+        count:
+          type: integer
+        children:
+          type: array
+          items:
+            $ref: "#/components/schemas/Category"
+      required:
+        - id
+        - slug
+        - name
+
+    CategoryTreeResponse:
+      type: object
+      properties:
+        categories:
+          type: array
+          items:
+            $ref: "#/components/schemas/Category"
+      required:
+        - categories
+
+    CategoryWithProducts:
+      type: object
+      properties:
+        category:
+          $ref: "#/components/schemas/Category"
+        products:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+        total:
+          type: integer
+      required:
+        - category
+        - products
+        - total
+
+    GenerateProductBody:
+      type: object
+      properties:
+        niche:
+          type: string
+        audience:
+          type: string
+        priceRange:
+          type: string
+        style:
+          type: string
+        material:
+          type: string
+        quantity:
+          type: integer
+      required:
+        - niche
+
+    GeneratedProduct:
+      type: object
+      properties:
+        title:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        specs:
+          type: object
+          additionalProperties:
+            type: string
+        seoTitle:
+          type: string
+        seoDescription:
+          type: string
+        suggestedCategory:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        variants:
+          type: array
+          items:
+            type: object
+            properties:
+              color:
+                type: string
+              sizes:
+                type: array
+                items:
+                  type: string
+            required:
+              - color
+              - sizes
+        estimatedPrice:
+          type: object
+          properties:
+            min:
+              type: number
+            max:
+              type: number
+          required:
+            - min
+            - max
+      required:
+        - title
+        - shortDescription
+        - longDescription
+        - specs
+        - seoTitle
+        - seoDescription
+        - suggestedCategory
+        - tags
+        - variants
+        - estimatedPrice

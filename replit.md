@@ -1,10 +1,11 @@
-# [Project name]
+# TMaker Store
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A full-featured TMaker-style custom apparel ecommerce website clone for a Malaysian custom printing shop. Customers can browse products, add to cart, request quotes, and generate AI product concepts.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080, proxied at /api)
+- `pnpm --filter @workspace/tmaker-store run dev` — run the storefront (port 19546, proxied at /)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
@@ -19,26 +20,47 @@ _Replace the heading above with the project's name, and this line with one sente
 - Validation: Zod (`zod/v4`), `drizzle-zod`
 - API codegen: Orval (from OpenAPI spec)
 - Build: esbuild (CJS bundle)
+- Frontend: React + Vite, Wouter routing, TanStack Query, shadcn/ui, Tailwind CSS v4
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `lib/api-spec/openapi.yaml` — OpenAPI source of truth (products, categories, AI generate)
+- `lib/db/src/schema/` — Drizzle schema: `categories.ts`, `products.ts`
+- `artifacts/api-server/src/routes/` — Express routes: products, categories, ai
+- `artifacts/tmaker-store/src/` — React storefront
+  - `pages/` — Home, Shop, Product, Category, Cart, AIGenerator, and 10+ content pages
+  - `components/Header.tsx`, `Footer.tsx`, `ProductCard.tsx`
+  - `hooks/use-cart.ts` — localStorage cart hook
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Contract-first API: OpenAPI spec → Orval codegen → typed React hooks
+- Categories stored flat in DB, assembled into tree at query time in the categories route
+- Cart state persisted in localStorage via `useCart` hook (no server-side cart)
+- Product variants (colour/sizes) computed on-the-fly from text arrays in Postgres
+- AI product generator is a deterministic template engine (no external LLM required)
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- **Shop**: 15+ seeded products from Gildan, Oren Sport, Crossrunner, North Harbour, Enzo brands
+- **Category hierarchy**: Hot Items → Apparel → Unisex/Men → T-Shirt, Polo, Hoodies, Uniforms, Oversized, Vest, Pants, Singlet
+- **Product detail**: colour swatches, size buttons, quantity stepper, add-to-cart with localStorage
+- **Cart**: line items, qty +/-, remove, order summary with totals
+- **AI Generator**: form with niche/audience/style/price inputs → instant product concept (title, description, specs, SEO, variants, estimated price)
+- **Content pages**: Custom Made, Ready Made, Sublimation, DTF, Corporate Solutions, Bulk Printing, Custom T-Shirt Printing, Create Your Design, User Guide, Catalogues, Brand Catalogues
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Brand: #D31F26 red, Jost font, white background, black CTAs
+- No emojis in UI
+- Sharp corners (no border-radius on buttons/cards)
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- API routes are mounted at `/api/*` — always use the proxy at localhost:80 for curl, never port directly
+- The `lib/api-zod/src/index.ts` must NOT re-export `./generated/types/*` via wildcard — causes name collision with Zod schemas. Only export specific type files.
+- Orval-generated hooks return `T` directly (not wrapped in `{ data: T }`)
+- Minimum order qty is 50 pieces per colour — this is enforced in the cart UI but not the backend
 
 ## Pointers
 
